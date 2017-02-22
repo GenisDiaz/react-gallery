@@ -1,0 +1,19 @@
+{
+  "name": "react-gallery",
+  "version": "1.0.0",
+  "description": "React gallery + webpack + babel + test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GenisDiaz/react-gallery.git"
+  },
+  "author": "Genís Díaz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GenisDiaz/react-gallery/issues"
+  },
+  "homepage": "https://github.com/GenisDiaz/react-gallery#readme"
+}
