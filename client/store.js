@@ -7,10 +7,12 @@ import rootReducer from './reducers/index';
 
 // import data
 import page from './data/page';
+import photo from './data/photo';
 
 //create a default object for store
 const defaultState = {
-  page
+  page,
+  photo
 };
 
 const store = createStore(rootReducer, defaultState);
