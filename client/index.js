@@ -1,9 +1,11 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-import 'index.html';
+// import components
+import Main from './components/Main';
+import GalleryGrid from './components/GalleryGrid';
 
 ReactDOM.render(
-  <h1>Hello, World! </h1>,
+  <Main><GalleryGrid/></Main>,
   document.getElementById('root')
 );
