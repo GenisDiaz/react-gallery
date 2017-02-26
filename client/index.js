@@ -11,6 +11,11 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
 
+//import init app action
+import { initApp } from './actions/actionCreators';
+
+store.dispatch(initApp());
+
 const router = (
   <Provider store={store}>
     <Router history={history}>
