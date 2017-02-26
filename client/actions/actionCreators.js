@@ -1,4 +1,4 @@
-import { getPhotos } from '../util/photo';
+import { getInitPhotos } from '../util/photo';
 
 // change page
 export function changePage(page) {
@@ -19,12 +19,13 @@ export function changeNumberOfPhotos(number) {
 // add photo and init
 export function loadPhotos () {
   return (dispatch) => {
-    return getPhotos()
-      .then((photo) => dispatch(addPhoto(photo)));
+    return getInitPhotos()
+      .then(photo => dispatch(addPhoto(photo)));
   };
 }
 
 export function addPhoto(photo) {
+  console.log('addPhoto', photo)
   return {
     type: 'ADD_PHOTO',
     photo
