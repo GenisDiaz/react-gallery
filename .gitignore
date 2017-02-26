@@ -38,6 +38,3 @@ jspm_packages
 
 #server / build
 static
-
-#config file
-config.json

@@ -11,6 +11,11 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
 
+//import Config file
+import Config from './data/config';
+
+console.log('Config', Config);
+
 const router = (
   <Provider store={store}>
     <Router history={history}>
