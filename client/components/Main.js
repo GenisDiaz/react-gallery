@@ -4,10 +4,10 @@ import { Link } from 'react-router';
 const Main = React.createClass({
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <h1>
           <Link to="/">
-            Weird Objects 
+            Weird Objects
           </Link>
         </h1>
         {React.cloneElement(this.props.children, this.props)}

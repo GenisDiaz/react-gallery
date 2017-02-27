@@ -25,7 +25,6 @@ export function loadPhotos () {
 }
 
 export function addPhotos(photos) {
-  console.log('addPhoto', photos)
   return {
     type: 'ADD_PHOTOS',
     photos
