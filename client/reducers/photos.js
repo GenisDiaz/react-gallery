@@ -1,6 +1,13 @@
 function photos(state = [], action) {
-  console.log('add photos');
-  console.log(state, action);
+  switch(action.type) {
+    case 'ADD_PHOTOS':
+      return [
+        ...state,
+        ...action.photos
+      ];
+    default:
+      return state;
+  }
   return state;
 }
 

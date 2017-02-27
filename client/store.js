@@ -16,7 +16,7 @@ const defaultState = {
   photos
 };
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

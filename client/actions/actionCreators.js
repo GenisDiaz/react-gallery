@@ -20,15 +20,15 @@ export function changeNumberOfPhotos(number) {
 export function loadPhotos () {
   return (dispatch) => {
     return getInitPhotos()
-      .then(photo => dispatch(addPhoto(photo)));
+      .then(photos => dispatch(addPhotos(photos)));
   };
 }
 
-export function addPhoto(photo) {
-  console.log('addPhoto', photo)
+export function addPhotos(photos) {
+  console.log('addPhoto', photos)
   return {
-    type: 'ADD_PHOTO',
-    photo
+    type: 'ADD_PHOTOS',
+    photos
   }
 }
 
