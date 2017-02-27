@@ -1,4 +1,4 @@
-import { getInitPhotos } from '../util/photo';
+import { getInitPhotos } from '../rest-api/photo';
 
 // change page
 export function changePage(page) {
@@ -33,7 +33,6 @@ export function addPhoto(photo) {
 }
 
 // init App
-
 export function initApp() {
   return (dispatch) => {
     dispatch(loadPhotos());
