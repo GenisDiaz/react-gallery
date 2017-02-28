@@ -9,7 +9,7 @@ const Photo = React.createClass({
         <div className="block-photo">
           <div className="block-photo-img">
             <Link to={`/view/${photo.id}`}>
-              <img src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} alt=""/>
+              <img src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} alt={`${photo.title}`}/>
             </Link>
             <p className="block-photo-caption">
               {photo.title}
