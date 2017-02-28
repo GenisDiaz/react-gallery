@@ -6,7 +6,6 @@ function page(state = [], action) {
         current_page: action.page + 1
       }
     case 'TOGGLE_LOADER':
-    console.log('TOGGLE_LOADER',state, action);
       return {
         ...state,
         loading: !state.loading

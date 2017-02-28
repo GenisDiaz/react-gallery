@@ -3,7 +3,6 @@ import React from 'react';
 const ButtonMorePhoto = React.createClass({
   render() {
     const { page, nextPage } = this.props;
-    console.log('ButtonMorePhoto',page);
     return (
       <a 
           className="btn btn-xs btn-default" 
