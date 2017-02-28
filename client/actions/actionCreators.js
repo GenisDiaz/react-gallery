@@ -8,6 +8,14 @@ export function changePage(page) {
   }
 }
 
+// next page
+export function nextPage(page) {
+  return (dispatch) => {
+    dispatch(changePage(page));
+    dispatch(loadPhotos());
+  }
+}
+
 // add photo and init
 export function loadPhotos () {
   return (dispatch) => {

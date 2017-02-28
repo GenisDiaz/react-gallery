@@ -1,5 +1,5 @@
 import config from '../data/config';
-import page from '../data/page';
+import store from '../store';
 
 export function getProfileName() {
   let fetchFlickrProfile = fetch('https://api.flickr.com/services/rest/?method=flickr.profile.getProfile&api_key='+config.api_key+'&user_id='+config.user_id+'&format=json&nojsoncallback=1');
@@ -10,7 +10,8 @@ export function getProfileName() {
 
 // function for fetch get photos in init app
 export function getInitPhotos() {
-  let fetchFlickr = fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+config.api_key+'&user_id='+config.user_id+'&per_page='+page.number_photos+'&format=json&nojsoncallback=1');
+  const { page } = store.getState();
+  let fetchFlickr = fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+config.api_key+'&user_id='+config.user_id+'&per_page='+page.number_photos+'&page='+page.current_page+'&format=json&nojsoncallback=1');
   return fetchFlickr.then( response => response.json())
     .then(photos => photos.photos)
     .then(photo => {

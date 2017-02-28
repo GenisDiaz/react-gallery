@@ -1,6 +1,13 @@
 function page(state = [], action) {
-  console.log('The page state will change');
-  console.log(state, action);
+  switch(action.type) {
+    case 'CHANGE_PAGE':
+      return {
+        ...state,
+        current_page: action.page + 1
+      }
+    default:
+      return state;
+  }
   return state;
 }
 
