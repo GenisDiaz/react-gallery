@@ -6,7 +6,7 @@ import App from './components/App';
 import GalleryGrid from './components/GalleryGrid';
 import Single from './components/Single';
 
-// css 
+// css
 import './components/css/bootstrap.css';
 import './components/css/style.css';
 
