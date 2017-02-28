@@ -10,7 +10,7 @@ const Main = React.createClass({
             Weird Objects
           </Link>
         </h1>
-        {React.cloneElement(this.props.children, this.props)}
+        {React.cloneElement({...this.props}.children, {...this.props})}
       </div>
     )
   }

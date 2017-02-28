@@ -7,7 +7,9 @@ const Photo = React.createClass({
     return (
       <div className="col-md-4 col-xs-6">
         <div className="block-photo">
-          {photo.id}
+          <Link to={`/view/${photo.id}`}>
+            {photo.id}
+          </Link>
         </div>
       </div>
     )
