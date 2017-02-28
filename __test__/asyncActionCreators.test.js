@@ -1,13 +1,6 @@
 import * as actionCreators from '../client/actions/actionCreators';
-import configureMockStore from 'redux-mock-store';
-import fetch from 'jest-fetch-mock';
-import thunk from 'redux-thunk';
-
-const middlewares = [ thunk ];
-const mockStore = configureMockStore(middlewares);
 
 describe('asyncActionCreators', () => {
-
     let mockObject = { photos : [
         {
             "id": "32175478084",
@@ -175,14 +168,24 @@ describe('asyncActionCreators', () => {
             "isfamily": 0
          }
     ]};
-
     it('Create fetch when init app', () => {
-        fetch.mockResponse(mockObject);
-        const store = mockStore({photos : []});
- 
-        return store.dispatch(actionCreators.initApp())
-        .then(() => {
-            console.log(expect(store.getActions()))
+        global.fetch = jest.fn().mockImplementation(() => {
+            var p = new Promise((resolve, reject) => {
+                resolve({
+                ok: true, 
+                Id: '123', 
+                json: function() { 
+                    return mockObject
+                }
+                });
+            });
+
+            return p;
+        });
+        return global.fetch(actionCreators.initApp())
+        .then( response => response.json())
+        .then((x) => {
+            expect(x).toEqual(mockObject);
         })
     })
 })
