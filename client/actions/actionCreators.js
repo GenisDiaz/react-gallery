@@ -8,14 +8,6 @@ export function changePage(page) {
   }
 }
 
-// change number of photos per page
-export function changeNumberOfPhotos(number) {
-  return {
-    type: 'CHANGE_NUMBER_OF_PHOTOS',
-    number
-  }
-}
-
 // add photo and init
 export function loadPhotos () {
   return (dispatch) => {

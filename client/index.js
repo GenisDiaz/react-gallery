@@ -20,9 +20,8 @@ const router = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={GalleryGrid}>
-          <Route path="/view/:photoId" component={Single}></Route>
-        </IndexRoute>
+        <IndexRoute component={GalleryGrid}/>
+        <Route path="/view/:photoId" component={Single}></Route>
       </Route>
     </Router>
   </Provider>
