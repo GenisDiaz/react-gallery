@@ -1,19 +1,17 @@
 import React from 'react';
 import Photo from './Photo';
+import Spinner from './commons/Spinner';
+import ButtonMorePhoto from './commons/ButtonMorePhoto';
 
 const GalleryGrid = React.createClass({
   render() {
+    const { photos, page, nextPage } = this.props;
     return (
       <div className="text-center padding-bottom-20p">
         <div className="row">
-            {this.props.photos.map((photo, i) => <Photo {...this.props} key={i} i={i} photo={photo}/>)}
+            {photos.map((photo, i) => <Photo {...this.props} key={i} i={i} photo={photo}/>)}
         </div>
-        <a 
-          className="btn btn-xs btn-default" 
-          href="javascript:;" 
-          role="button"
-          onClick={this.props.nextPage.bind(null, this.props.page.current_page)}
-          >More photos</a>
+        { page.loading ? <Spinner/> : <ButtonMorePhoto {...this.props}/> }
       </div>
     )
   }

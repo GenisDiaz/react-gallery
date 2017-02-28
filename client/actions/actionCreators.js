@@ -1,5 +1,12 @@
 import { getInitPhotos } from '../rest-api/photo';
 
+// toggleLoader
+export function toggleLoader() {
+  return {
+    type: 'TOGGLE_LOADER'
+  }
+}
+
 // change page
 export function changePage(page) {
   return {
@@ -11,8 +18,11 @@ export function changePage(page) {
 // next page
 export function nextPage(page) {
   return (dispatch) => {
+    dispatch(toggleLoader());
     dispatch(changePage(page));
-    dispatch(loadPhotos());
+    dispatch(loadPhotos()).then(
+      x => dispatch(toggleLoader())
+    );
   }
 }
 
@@ -34,6 +44,8 @@ export function addPhotos(photos) {
 // init App
 export function initApp() {
   return (dispatch) => {
-    dispatch(loadPhotos());
+    dispatch(loadPhotos()).then(
+      x => dispatch(toggleLoader())
+    );
   }
 }

@@ -5,6 +5,12 @@ function page(state = [], action) {
         ...state,
         current_page: action.page + 1
       }
+    case 'TOGGLE_LOADER':
+    console.log('TOGGLE_LOADER',state, action);
+      return {
+        ...state,
+        loading: !state.loading
+      }
     default:
       return state;
   }
