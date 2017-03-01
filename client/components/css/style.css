@@ -46,3 +46,28 @@ body {
 .padding-bottom-20p {
   padding-bottom: 20px;
 }
+
+.block-single-photo {
+  margin: 0 2rem 2rem 2rem;
+  padding: 2rem;
+  border: 1px solid lightgray;
+  background: white;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.03);
+  position: relative;
+}
+
+.block-single-photo img {
+  width: 100%;
+  display: block;
+}
+
+.block-single-photo .block-single-photo-info h1{
+  margin:0;
+  font-size: 2rem;
+}
+
+.block-single-photo .block-single-photo-info h2{
+  margin:5px 0;
+  font-size: 1.5rem;
+  font-style: italic;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const Photo = React.createClass({
+class Photo extends React.Component {
   render() {
     const { photo, i } = this.props;
     return (
@@ -22,6 +22,6 @@ const Photo = React.createClass({
       </div>
     )
   }
-});
+};
 
 export default Photo;

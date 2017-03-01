@@ -1,4 +1,4 @@
-import { getInitPhotos } from '../rest-api/photo';
+import { getInitPhotosApi, getPhotoInfoApi } from '../rest-api/photo';
 
 // toggleLoader
 export function toggleLoader() {
@@ -29,7 +29,7 @@ export function nextPage(page) {
 // add photo and init
 export function loadPhotos () {
   return (dispatch) => {
-    return getInitPhotos()
+    return getInitPhotosApi()
       .then(photos => dispatch(addPhotos(photos)));
   };
 }
@@ -38,6 +38,21 @@ export function addPhotos(photos) {
   return {
     type: 'ADD_PHOTOS',
     photos
+  }
+}
+
+// get photo info
+export function getPhotoInfo(idPhoto) {
+  return (dispatch) => {
+    return getPhotoInfoApi(idPhoto)
+      .then(info => dispatch(addPhotoInfo(info)));
+  };
+}
+
+export function addPhotoInfo(info) {
+  return {
+    type: 'ADD_PHOTO_INFO',
+    info
   }
 }
 

@@ -9,7 +9,7 @@ export function getProfileName() {
 }
 
 // function for fetch get photos in init app
-export function getInitPhotos() {
+export function getInitPhotosApi() {
   const { page } = store.getState();
   let fetchFlickr = fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+config.api_key+'&user_id='+config.user_id+'&per_page='+page.number_photos+'&page='+page.current_page+'&format=json&nojsoncallback=1');
   return fetchFlickr.then( response => response.json())
@@ -22,4 +22,23 @@ export function getInitPhotos() {
         );
       }
     );
+}
+
+export function getPhotoComments(photoId) {
+  let fetchFlickrComments = fetch('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key='+config.api_key+'&photo_id='+photoId+'&format=json&nojsoncallback=1');
+  return fetchFlickrComments.then(response => response.json())
+    .then(photoComments => photoComments.comments)
+    .then(comments => comments.comment);
+}
+
+// function for get photo info when it's called
+export function getPhotoInfoApi(photoId) {
+  let fetchFlickrPhotoInfo = fetch('https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key='+config.api_key+'&photo_id='+photoId+'&format=json&nojsoncallback=1');
+  return fetchFlickrPhotoInfo.then(response => response.json())
+    .then(photoInfo => {
+      let photoComments = getPhotoComments(photoId);
+      return photoComments.then(
+        comments => console.log(comments)
+      );
+    });
 }

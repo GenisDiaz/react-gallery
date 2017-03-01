@@ -3,7 +3,7 @@ import Photo from './Photo';
 import Spinner from './commons/Spinner';
 import ButtonMorePhoto from './commons/ButtonMorePhoto';
 
-const GalleryGrid = React.createClass({
+class GalleryGrid extends React.Component {
   render() {
     const { photos, page, nextPage } = this.props;
     return (
@@ -15,6 +15,6 @@ const GalleryGrid = React.createClass({
       </div>
     )
   }
-});
+};
 
 export default GalleryGrid;
