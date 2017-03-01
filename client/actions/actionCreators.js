@@ -30,9 +30,23 @@ export function nextPage(page) {
 export function loadPhotos () {
   return (dispatch) => {
     return getInitPhotosApi()
-      .then(photos => dispatch(addPhotos(photos)));
+      //.then(photos => dispatch(addPhotos(photos)));
+      .then(photos => {
+        if (photos.code === 2) {
+          dispatch(throwError(photos.text));
+        } else {
+          dispatch(addPhotos(photos));
+        }
+      });
   };
 }
+
+export function throwError(text) {
+  return {
+    type: 'THROW_ERROR',
+    text
+  }
+} 
 
 export function addPhotos(photos) {
   return {

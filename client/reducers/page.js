@@ -10,6 +10,12 @@ function page(state = [], action) {
         ...state,
         loading: !state.loading
       }
+    case 'THROW_ERROR':
+     return {
+       ...state,
+       error: true,
+       text: action.text
+     }
     default:
       return state;
   }

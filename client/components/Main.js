@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Error from './commons/Error';
 
 class Main extends React.Component {
   render() {
+    const { page } = this.props;
+    console.log(page);
     return (
       <div className="container-fluid">
         <h1>
@@ -10,7 +13,7 @@ class Main extends React.Component {
             Weird Objects
           </Link>
         </h1>
-        {React.cloneElement({...this.props}.children, {...this.props})}
+        { page.error ? <Error {...this.props}/> : React.cloneElement({...this.props}.children, {...this.props})}
       </div>
     )
   }

@@ -4,7 +4,12 @@ import store from '../store';
 export function getProfileName() {
   let fetchFlickrProfile = fetch('https://api.flickr.com/services/rest/?method=flickr.profile.getProfile&api_key='+config.api_key+'&user_id='+config.user_id+'&format=json&nojsoncallback=1');
   return fetchFlickrProfile.then(response => response.json())
-    .then(profile => profile.profile)
+    .then(profile => {
+      if (profile.code === 1){
+        return false;
+      }
+      return profile.profile;
+    })
     .then(name => name.first_name);
 }
 
@@ -13,13 +18,28 @@ export function getInitPhotosApi() {
   const { page } = store.getState();
   let fetchFlickr = fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+config.api_key+'&user_id='+config.user_id+'&per_page='+page.number_photos+'&page='+page.current_page+'&format=json&nojsoncallback=1');
   return fetchFlickr.then( response => response.json())
-    .then(photos => photos.photos)
+    .then(photos =>{
+      if (photos.code === 2){
+        return {
+          code: 2,
+          text: new Error("User Id incorrect. See config file.")
+        };
+      }
+      return photos.photos;
+    })
     .then(photo => {
         let photoResults = photo.photo;
         let profileName = getProfileName();
         return profileName.then(
-          name => photoResults.map(x => Object.assign({}, x, {'name': name}))
-        );
+          name => {
+            if (!name) {
+              return {
+                code: 2,
+                text: new Error("User Id incorrect. See config file.")
+              };
+            }
+            return photoResults.map(x => Object.assign({}, x, {'name': name}))
+        });
       }
     );
 }
