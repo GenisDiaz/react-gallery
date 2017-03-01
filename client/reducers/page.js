@@ -10,6 +10,11 @@ function page(state = [], action) {
         ...state,
         loading: !state.loading
       }
+    case 'ADD_PAGES_NUM':
+      return {
+        ...state,
+        pages: action.pagesNumber
+      }
     case 'THROW_ERROR':
      return {
        ...state,

@@ -29,7 +29,7 @@ export function getInitPhotosApi() {
     })
     .then(photo => {
         let photoResults = photo.photo;
-        let profileName = getProfileName();
+        let profileName  = getProfileName();
         return profileName.then(
           name => {
             if (!name) {
@@ -38,7 +38,7 @@ export function getInitPhotosApi() {
                 text: new Error("User Id incorrect. See config file.")
               };
             }
-            return photoResults.map(x => Object.assign({}, x, {'name': name}))
+            return Object.assign({}, photo, {photo: photoResults.map(x => Object.assign({}, x, {'name': name}))});
         });
       }
     );

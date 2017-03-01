@@ -35,7 +35,8 @@ export function loadPhotos () {
         if (photos.code === 2) {
           dispatch(throwError(photos.text));
         } else {
-          dispatch(addPhotos(photos));
+          dispatch(addPhotos(photos.photo));
+          dispatch(addPagesNumber(photos.pages));
         }
       });
   };
@@ -52,6 +53,13 @@ export function addPhotos(photos) {
   return {
     type: 'ADD_PHOTOS',
     photos
+  }
+}
+
+export function addPagesNumber(pagesNumber) {
+  return {
+    type: 'ADD_PAGES_NUM',
+    pagesNumber
   }
 }
 
