@@ -5,7 +5,6 @@ import Error from './commons/Error';
 class Main extends React.Component {
   render() {
     const { page } = this.props;
-    console.log(page);
     return (
       <div className="container-fluid">
         <h1>

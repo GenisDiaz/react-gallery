@@ -56,9 +56,10 @@ export function getPhotoInfoApi(photoId) {
   let fetchFlickrPhotoInfo = fetch('https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key='+config.api_key+'&photo_id='+photoId+'&format=json&nojsoncallback=1');
   return fetchFlickrPhotoInfo.then(response => response.json())
     .then(photoInfo => {
+      let photoInfoResult = photoInfo.photo;
       let photoComments = getPhotoComments(photoId);
       return photoComments.then(
-        comments => console.log(comments)
+        comments => Object.assign({}, photoInfoResult, {comments: comments})
       );
     });
 }

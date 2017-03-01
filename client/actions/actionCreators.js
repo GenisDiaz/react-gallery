@@ -56,16 +56,17 @@ export function addPhotos(photos) {
 }
 
 // get photo info
-export function getPhotoInfo(idPhoto) {
+export function getPhotoInfo(photoId, index) {
   return (dispatch) => {
-    return getPhotoInfoApi(idPhoto)
-      .then(info => dispatch(addPhotoInfo(info)));
+    return getPhotoInfoApi(photoId)
+      .then(info => dispatch(addPhotoInfo(index, info)));
   };
 }
 
-export function addPhotoInfo(info) {
+export function addPhotoInfo(index, info) {
   return {
     type: 'ADD_PHOTO_INFO',
+    index,
     info
   }
 }

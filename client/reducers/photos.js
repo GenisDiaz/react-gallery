@@ -5,6 +5,13 @@ function photos(state = [], action) {
         ...state,
         ...action.photos
       ];
+    case 'ADD_PHOTO_INFO':
+     const i = parseInt(action.index);
+     return [
+        ...state.slice(0,i),
+        {...state[i], info: action.info},
+        ...state.slice(i + 1)
+      ];
     default:
       return state;
   }

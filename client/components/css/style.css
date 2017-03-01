@@ -71,3 +71,17 @@ body {
   font-size: 1.5rem;
   font-style: italic;
 }
+
+.block-single-photo .block-single-photo-info h3{
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.block-comments{
+  max-height: 450px;
+  overflow-y: scroll;
+}
+
+.block-comment h4{
+  font-size: 1rem;
+}

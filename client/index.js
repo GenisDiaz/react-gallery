@@ -25,7 +25,7 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={GalleryGrid}/>
-        <Route path="/view/:photoId" component={Single}></Route>
+        <Route path="/view/:photoId/:index" component={Single}></Route>
       </Route>
     </Router>
   </Provider>
