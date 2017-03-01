@@ -17,6 +17,49 @@ describe('actionCreators', () => {
         expect(actionCreators.changePage(page)).toEqual(expectedAction)
     })
 
+    it('should create an action to throw error', () => {
+        const text = 'error msg';
+        const expectedAction = {
+            type: 'THROW_ERROR',
+            text
+        }
+        expect(actionCreators.throwError(text)).toEqual(expectedAction)
+    })
+
+    it('should create an action to toggle loader', () => {
+        const expectedAction = {
+            type: 'TOGGLE_LOADER'
+        }
+        expect(actionCreators.toggleLoader()).toEqual(expectedAction)
+    })
+
+    it('should create an action to get pages number', () => {
+        const pagesNumber = 10; 
+        const expectedAction = {
+            type: 'ADD_PAGES_NUM',
+            pagesNumber
+        }
+        expect(actionCreators.addPagesNumber(pagesNumber)).toEqual(expectedAction)
+    })
+
+    it('should create an action to get photo info', () => {
+        const index = 0; 
+        const info  = {
+            comments : {
+                name: 'max',
+                age: '12'
+            },
+            date: '12-12-12',
+            views: '12312'
+        }
+        const expectedAction = {
+            type: 'ADD_PHOTO_INFO',
+            index,
+            info
+        }
+        expect(actionCreators.addPhotoInfo(index, info)).toEqual(expectedAction)
+    })
+
     it('should create an action to add photo', () => {
         const photos = [
             {
